@@ -11,7 +11,15 @@ class PostCell: UITableViewCell {
 
     @IBOutlet private weak var blurView: UIVisualEffectView!
 
+    @IBOutlet weak var locationLabel: UILabel!
+    
     private var imageDataRequest: DataRequest?
+    
+    var onCommentTapped: (() -> Void)?
+
+    @IBAction func didTapComment(_ sender: UIButton){
+            onCommentTapped?()
+    }
 
     func configure(with post: Post) {
 
@@ -38,6 +46,7 @@ class PostCell: UITableViewCell {
         if let date = post.createdAt {
             dateLabel.text = DateFormatter.postFormatter.string(from: date)
         }
+        locationLabel.text = post.locationName ?? ""
     }
 
     override func prepareForReuse() {

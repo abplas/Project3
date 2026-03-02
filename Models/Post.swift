@@ -10,8 +10,10 @@ struct Post: ParseObject {
     var updatedAt: Date?
     var ACL: ParseACL?
     var originalData: Data?
+    var locationName: String?
 
     var caption: String?
     var user: User?
     var imageFile: ParseFile?
+    
 }
